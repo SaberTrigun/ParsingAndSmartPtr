@@ -235,10 +235,26 @@ void salaryCalculation(const std::string& EntryPos,
 
     for(int i = 0; i < sizeUniquePtrCounterCash; ++i)
     {
-        if(UniquePtrEmployee[i]->position == EntryPos)
+        if(UniquePtrEmployee[i]->position == EntryPos && EntryPos == "director")
         {
             std::istringstream(UniquePtrEmployee[i]->workTime) >> convertStringToIntPay;
             UniquePtrCounterCash.emplace_back(new Director(UniquePtrEmployee[i]->name, convertStringToIntPay));
+            UniquePtrCounterCash[index]->payRoll(counterCash);
+            UniquePtrCounterCash[index]->showSalary();
+            ++index;
+        }
+        else if(UniquePtrEmployee[i]->position == EntryPos && EntryPos == "programmer")
+        {
+            std::istringstream(UniquePtrEmployee[i]->workTime) >> convertStringToIntPay;
+            UniquePtrCounterCash.emplace_back(new Programmer(UniquePtrEmployee[i]->name, convertStringToIntPay));
+            UniquePtrCounterCash[index]->payRoll(counterCash);
+            UniquePtrCounterCash[index]->showSalary();
+            ++index;
+        }
+        else if(UniquePtrEmployee[i]->position == EntryPos && EntryPos == "assistant")
+        {
+            std::istringstream(UniquePtrEmployee[i]->workTime) >> convertStringToIntPay;
+            UniquePtrCounterCash.emplace_back(new Assistant(UniquePtrEmployee[i]->name, convertStringToIntPay));
             UniquePtrCounterCash[index]->payRoll(counterCash);
             UniquePtrCounterCash[index]->showSalary();
             ++index;
