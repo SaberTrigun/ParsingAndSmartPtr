@@ -13,7 +13,7 @@ struct Employee
     Employee() : position(), name(), workTime()
     {}
 
-    Employee(std::string Position, std::string Name, std::string WorkTime) :
+    Employee(const std::string& Position, const std::string& Name, const std::string& WorkTime) :
         position(Position),
         name(Name),
         workTime(WorkTime)
@@ -65,6 +65,10 @@ public:
     {}
 
 
+    CounterCash(const std::string& Name, const int WorkTime) : nameEmp(Name), workTimeEmp(WorkTime)
+    {}
+
+
     //Считываем текст из файлов без спец вимволов типа '\n' и считаем количество записей
     std::string readFile(const char* filePath)
     {
@@ -113,15 +117,15 @@ public:
     }
 
 
-    int crutchDir ()
+    int crutchDir () const
     {return coeffDirector;}
 
 
-    int crutchProg ()
+    int crutchProg () const
     {return coeffProgrammer;}
 
 
-    int crutchAssist ()
+    int crutchAssist () const
     {return coeffAssistant;}
 
 
@@ -133,19 +137,15 @@ public:
     {}
 
 
-    virtual ~CounterCash()
-    {}
+    virtual ~CounterCash() = default;
 };
 
 
 class Director : public CounterCash
 {
 public:
-    Director(const std::string& Name, const unsigned int WorkTime)
-    {
-        nameEmp = Name;
-        workTimeEmp = WorkTime;
-    }
+    Director(const std::string& Name, const unsigned int WorkTime) : CounterCash(Name, WorkTime)
+    {}
 
 
     void payRoll(CounterCash& counterCash)
@@ -170,11 +170,8 @@ public:
 class Programmer : public CounterCash
 {
 public:
-    Programmer(const std::string& Name, const unsigned int WorkTime)
-    {
-        nameEmp = Name;
-        workTimeEmp = WorkTime;
-    }
+    Programmer(const std::string& Name, const unsigned int WorkTime) : CounterCash(Name, WorkTime)
+    {}
 
 
     void payRoll(CounterCash& counterCash)
@@ -199,11 +196,8 @@ public:
 class Assistant : public CounterCash
 {
 public:
-    Assistant(const std::string& Name, const unsigned int WorkTime)
-    {
-        nameEmp = Name;
-        workTimeEmp = WorkTime;
-    }
+    Assistant(const std::string& Name, const unsigned int WorkTime) : CounterCash(Name, WorkTime)
+    {}
 
 
     void payRoll(CounterCash& counterCash)
