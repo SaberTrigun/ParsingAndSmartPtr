@@ -51,7 +51,16 @@ private:
 
 public:
 
-    CounterCash() : nameEmp(), workTimeEmp(0), salaryEmp(0), coeffDirector(0), coeffProgrammer(0), coeffAssistant(0), counterDelimStaff(0), fileText(), clearStr(), uniquePtrClearText(new std::string[3])
+    CounterCash() : nameEmp(),
+                    workTimeEmp(0),
+                    salaryEmp(0),
+                    coeffDirector(0),
+                    coeffProgrammer(0),
+                    coeffAssistant(0),
+                    counterDelimStaff(0),
+                    fileText(),
+                    clearStr(),
+                    uniquePtrClearText(new std::string[3])
     {}
 
     CounterCash(unsigned int coeffDir, unsigned int coeffProg, unsigned int coeffAssist) :
