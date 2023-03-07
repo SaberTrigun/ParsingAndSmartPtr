@@ -31,11 +31,13 @@ struct Employee
 class CounterCash
 {
 protected:
+
     std::string nameEmp;
     unsigned int workTimeEmp;
     unsigned int salaryEmp;
 
 private:
+
     unsigned int coeffDirector;
     unsigned int coeffProgrammer;
     unsigned int coeffAssistant;
@@ -48,6 +50,7 @@ private:
     std::unique_ptr<std::string[]> uniquePtrClearText;
 
 public:
+
     CounterCash() : nameEmp(), workTimeEmp(0), salaryEmp(0), coeffDirector(0), coeffProgrammer(0), coeffAssistant(0), counterDelimStaff(0), fileText(), clearStr(), uniquePtrClearText(new std::string[3])
     {}
 
@@ -144,6 +147,7 @@ public:
 class Director : public CounterCash
 {
 public:
+
     Director(const std::string& Name, const unsigned int WorkTime) : CounterCash(Name, WorkTime)
     {}
 
@@ -170,6 +174,7 @@ public:
 class Programmer : public CounterCash
 {
 public:
+
     Programmer(const std::string& Name, const unsigned int WorkTime) : CounterCash(Name, WorkTime)
     {}
 

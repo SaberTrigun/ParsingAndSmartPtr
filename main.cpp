@@ -22,8 +22,18 @@ private:
     unsigned int currentCursorPosition;
     const unsigned int TOTALNUMBERCOLUMN;
     std::string** tableFileText;
+
 public:
-    CounterCash() : name(), workTime(0), salary(0), coeffDirector(0), coeffProgrammer(0), coeffAssistant(0), fileText(), clearText(), counterDelimStaff(0), currentCursorPosition(0), TOTALNUMBERCOLUMN(3), tableFileText(nullptr)
+
+    CounterCash() : workTime(0),
+                    salary(0),
+                    coeffDirector(0),
+                    coeffProgrammer(0),
+                    coeffAssistant(0),
+                    counterDelimStaff(0),
+                    currentCursorPosition(0),
+                    TOTALNUMBERCOLUMN(3),
+                    tableFileText(nullptr)
     {}
 
 
@@ -57,12 +67,13 @@ public:
             getline(fileStream, fileText);
             clearText = clearText + fileText;
         }
+
         return clearText;
     }
 
 
     // Считаем общее колличество записей/сотрудников в строке
-    int getTotalNumberEmployees(std::string& clearText)
+    int getTotalNumberEmployees(const std::string& clearText)
     {
         for(unsigned int i = 0; i < clearText.length() ; ++i)
         {
@@ -78,7 +89,7 @@ public:
 
 
     // Парсим строку в таблицу |должность|фамилия|время|
-    std::string** parsingString(std::string& clearText)
+    std::string** parsingString(const std::string& clearText)
     {
         const unsigned int TOTALNUMBERLINE = counterDelimStaff;
         tableFileText = new std::string* [TOTALNUMBERLINE];
@@ -100,6 +111,7 @@ public:
                 ++currentCursorPosition;
             }
         }
+
         return tableFileText;
     }
 
@@ -173,17 +185,20 @@ public:
         workTime = WorkTime;
     }
 
+
     void payRoll(CounterCash& counterCash)
     {
         unsigned int crutchCoeff = counterCash.crutchProg();
         salary = workTime * crutchCoeff;
     }
 
+
     void showSalary()
     {
         std::string str = std::to_string(salary);
         std::cout << name << "  " << str + "$" << std::endl;
     }
+
 
     ~Programmer()
     {}
@@ -199,17 +214,20 @@ public:
         workTime = WorkTime;
     }
 
+
     void payRoll(CounterCash& counterCash)
     {
         unsigned int crutchCoeff = counterCash.crutchAssist();
         salary = workTime * crutchCoeff;
     }
 
+
     void showSalary()
     {
         std::string str = std::to_string(salary);
         std::cout << name << "  " << str + "$" << std::endl;
     }
+
 
     ~Assistant()
     {}
